@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <header class="myheader blue-bg">
+        <div class="container row" style="align-items: center;">
+            <h1 class="col-sm-8 title">
+                <a asp-controller="Home" asp-action="Index" class="home">
+                    <b>Plants Shop</b>
+                    by Danylo Grechyshkin
+                </a>
+            </h1>
+            
+            <div class="col-sm-3 right">
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <label style="margin-right: 15px;">Hello, @User.Identity.Name</label>
+                        <input type="submit" class="btn btn-light" value="Log out" />
+                    </form>
+                }
+                else 
+                {
+                    <a class="btn btn-light" asp-controller="Account" asp-action="Register">Register</a>
+                    <a class="btn btn-light" asp-controller="Account" asp-action="Login">Log in</a>
+                }
+            }
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="myfooter mt-auto blue-bg">
+        <div class="container">
+            <div class="footer-social">
+                <a class="social-link" href="https://www.instagram.com/dork.munimum/"><img
+                        src="~/Images/logo-insta.png" alt="Insta" width="50" height="50"></a>                        
+                <a class="social-link" href="https://vk.com/darkminimum"><img src="~/Images/logo-vk.png" alt="Vk"
+                        width="50" height="50"></a>   
+                <a class="social-link" href="https://t.me/DarkMinimum"><img src="~/Images/logo-tg.png" alt="Telegram"
+                        width="50" height="50"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

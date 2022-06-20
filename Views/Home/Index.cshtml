@@ -1,0 +1,117 @@
+﻿@using Newtonsoft.Json
+@using PlantsShop.Models;
+@model IndexViewModel
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/styles.css" />
+
+@addTagHelper *, PlantsShop
+@{
+    ViewData["Title"] = "Plants Shop";
+}
+    
+<main class="main center">
+    <div class="container">
+        <div class="padding-top">
+            <div class="manage-buttons margin-left margin-right">
+                <div class="manage-group left">
+                    <div class="display btn-group">
+                            <a class="btn btn-light border border-primary"
+                                    asp-route-isList="@(true)"
+                                    asp-route-sortOrder="@(Model.SortViewModel.Current)"
+                                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                                    asp-route-seller="@(Model.FilterViewModel.SelectedSeller)">
+                            <i class="bi bi-list"></i>
+                        </a>
+                        <a class="btn btn-light border border-primary"
+                                    asp-route-isList="@(false)"
+                                    asp-route-sortOrder="@(Model.SortViewModel.Current)"
+                                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                                    asp-route-seller="@(Model.FilterViewModel.SelectedSeller)">
+                            <i class="bi bi-grid"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="manage-group right">
+                    <div class="shopping-cart">
+                        <a asp-controller="Cart" asp-action="Index" id="cart" class="btn btn-light border border-primary">
+                            <i class="bi bi-cart4"></i>
+                            <sub class="sub" id="count"></sub>
+                        </a>
+                    </div>
+                </div>
+                <hr class="hr">
+                <div class="manage-group left sort">
+                    <div class="form-group">
+                        <b>Filters:</b>
+                        <div class="btn-group">
+                            <a class="btn btn-light border border-primary"
+                                    asp-action="Index"
+                                    asp-route-isList="@(Model.isList)"
+                                    asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+                                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                                    asp-route-seller="@(Model.FilterViewModel.SelectedSeller)">Name</a>
+                            <a class="btn btn-light border border-primary"
+                                    asp-action="Index"
+                                    asp-route-isList="@(Model.isList)"
+                                    asp-route-sortOrder="@(Model.SortViewModel.PriceSort)"
+                                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                                    asp-route-seller="@(Model.FilterViewModel.SelectedSeller)">Price</a>
+                            <a class="btn btn-light border border-primary"
+                                    asp-action="Index"
+                                    asp-route-isList=""
+                                    asp-route-sortOrder=""
+                                    asp-route-name=""
+                                    asp-route-seller="">Reset Filters</a>
+                        </div>
+                    </div>   
+                </div>
+                <div class="manage-group-filters right sort" style="margin-right: 15px;">
+                    <form method="get">
+                        <div class="form-group row" style="align-items: center;">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="name" class="col-sm-6 col-form-label">Flower name:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Plant" id="name" name="name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <label for="seller" class="col-sm-4 col-form-label">Seller:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="seller" name="seller" asp-items="Model.FilterViewModel.Sellers"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Search" class="col-md-2 btn btn-light border border-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>            
+        <list-grid is-list="Model.isList" id="items-list">
+            @{
+                foreach (var p in Model.Plants)
+                {
+                                <div class="item">
+                                    <div class="picture">
+                                        <img class="plant" src="~/@p.PhotoPath">
+                                    </div>
+                                    <div class="description">
+                                        <input type="hidden" value="@p.Id" name="Id" />
+                                        <h1 class="display">@p.Name</h1>
+                                        <p class="description-text">@p.Description, @p.Price$</p>
+                                        <button data-id="@p.Id" class="btn btn-success add-to-cart">Add to Cart</button>
+                                    </div>
+                                </div>
+                }
+            }
+        </list-grid>
+        <page-link index-view-model="Model" page-action="Index"></page-link>
+    </div>
+</main>

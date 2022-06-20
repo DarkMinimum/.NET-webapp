@@ -1,0 +1,282 @@
+﻿* {
+    line-height: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    color: black;
+}
+
+.plant {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    max-height: 200px;
+}
+
+i {
+    font-size: calc(2em + 0.5vmax);
+}
+
+.display {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+h1 {
+    margin-top: 0;
+    font-family: inherit;
+    margin-bottom: 0;
+}
+
+.direction-column .description {
+    display: flex;
+    align-items: flex-end;
+}
+
+.direction-column .description .display,
+.direction-column .description .description-text,
+.direction-column .description .btn {
+    margin-left: 20px;
+    line-height: 1;
+}
+
+.direction-column .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn,
+.btn:hover {
+    color: cornflowerblue;
+}
+
+.manage-buttons {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.manage-group-filters {
+    min-width: 60%
+}
+
+.description .description-text {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+
+.margin-right {
+    margin-right: 3rem !important;
+}
+
+.margin-left {
+    margin-left: 3rem !important;
+}
+
+.padding-top {
+    padding-top: 3rem !important;
+}
+
+.left {
+    text-align: left !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.right {
+    text-align: right !important;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.direction-row {
+    flex-direction: row;
+}
+
+.direction-column .description .description-text {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.direction-column .description .btn {
+    font-size: 19px;
+    margin-bottom: 0;
+}
+
+.direction-column {
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.item {
+    position: relative;
+    min-width: 25%
+}
+
+.pagination {
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.active,
+.active:hover {
+    background-color: #b5d9ff;
+    border-color: #b5d9ff;
+}
+
+.sort .btn {
+    color: black;
+}
+
+.description .btn {
+    color: yellow;
+    margin-bottom: 1rem;
+}
+
+.custom-control-label::after,
+.custom-control-label::before {
+    display: none;
+}
+
+.custom-control-label {
+    display: flex;
+}
+
+.blue-bg {
+    background-color: #007bff42;
+}
+
+.hr {
+    background-color: #007bff42;
+    width: 100%;
+    border-width: 2px;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.home,
+.home:hover {
+    color: black;
+    margin-left: 0;
+}
+
+.myfooter,
+.myheader {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.myfooter {
+    text-align: center;
+}
+
+.title {
+    margin-left: 50px;
+    font-family: "Snell Roundhand", cursive;
+}
+
+input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+}
+
+.in-stock label input {
+    margin-left: 10px;
+}
+
+.space-evently {
+    justify-content: space-between;
+}
+
+.picture {
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+.space-evently {
+    justify-content: space-between;
+}
+
+.direction-column .picture {
+    margin: 0;
+}
+
+.direction-column .plant {
+    width: 200px;
+}
+
+.sub {
+    font-size: 17px;
+}
+
+
+.cart-buttons {
+    display: flex;
+}
+
+.cart-btn,
+.cart-count {
+    padding: 15px 20px;
+    width: 52px;
+    max-width: 52px;
+}
+
+.cart-btn:hover,
+.cart-btn:active,
+.cart-btn:focus {
+    outline: none;
+}
+
+.cart-btn:hover {
+    background-color: cornflowerblue;
+}
+
+.cart-btn:active {
+    background-color: rgb(27, 107, 255);
+}
+
+
+.cart-btn {
+    cursor: pointer;
+    border: black 0.1px solid;
+    border-radius: 4px;
+}
+
+.total-count {
+    font-size: 20px;
+}
